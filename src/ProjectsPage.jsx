@@ -129,6 +129,7 @@ const ProjectsPage = () => {
       <Navbar />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 relative projects-section-bg">
         <div className="relative z-10">
+          
           {/* Page Header */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -136,6 +137,7 @@ const ProjectsPage = () => {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
+            
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Projects
             </h1>

@@ -81,6 +81,7 @@ const BlogPostPage = () => {
               <span>←</span>
               
               <span>Back to blog</span>
+              <br/>
             </Link>
             
             <div className="project-card p-8 text-center">

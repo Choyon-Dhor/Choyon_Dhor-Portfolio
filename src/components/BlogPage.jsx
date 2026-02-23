@@ -77,13 +77,16 @@ const BlogPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-purple-light transition-colors mb-8"
-            >
-              <span>←</span>
-              <span>Back to Home</span>
-            </Link>
+            <div className="flex justify-start">
+  <Link
+    to="/"
+    className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-purple-light transition-colors mb-8"
+  >
+    <span>←</span>
+    <span>Back to Home</span>
+  </Link>
+</div>
+            <br/>
             <span className="text-sm text-purple-400 font-mono">#blog</span>
             <h1 className="text-5xl md:text-6xl font-bold text-white mt-2 mb-4">
               Thoughts &{' '}

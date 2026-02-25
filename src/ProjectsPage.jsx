@@ -10,7 +10,7 @@ const projectsData = {
       title: 'Portfolio Website',
     tech: ['React', 'Tailwind'],
     description: 'Fully responsive personal portfolio website.',
-      links: { live: '#', github: '#' },
+      links: { live: 'choyondhorportfolio-4uzi0vka2-choyon-dhors-projects.vercel.app', github: 'https://github.com/Choyon-Dhor/Choyon_Dhor-Portfolio' },
     },
     {
       title: 'Freelancing Website for DBMS Course project',

@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    { "source": "/admin", "destination": "/index.html" },
+    { "source": "/projects", "destination": "/index.html" },
+    { "source": "/activities", "destination": "/index.html" },
+    { "source": "/blog", "destination": "/index.html" },
+    { "source": "/blog/(.*)", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

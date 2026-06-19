@@ -2,38 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
-// Sample blog posts data
-const blogPosts = [
-  {
-    slug: 'understanding-decision-trees',
-    title: 'Understanding Decision Trees in Machine Learning',
-    date: 'Feb 15, 2026',
-    excerpt: 'A deep dive into how decision trees work, their advantages, and practical implementation with Scikit-learn.',
-    tags: ['Machine Learning', 'Python', 'Tutorial'],
-  },
-  {
-    slug: 'energy-load-forecasting',
-    title: 'Short-Term Energy Load Forecasting: A Research Overview',
-    date: 'Jan 28, 2026',
-    excerpt: 'Exploring methods and challenges in predicting energy demand using time series and ML models.',
-    tags: ['Research', 'Energy', 'Forecasting'],
-  },
-  {
-    slug: 'css-grid-vs-flexbox',
-    title: 'CSS Grid vs Flexbox: When to Use Which',
-    date: 'Dec 10, 2025',
-    excerpt: 'A practical guide to choosing between Grid and Flexbox for modern web layouts.',
-    tags: ['CSS', 'Web Development'],
-  },
-  {
-    slug: 'getting-started-with-react',
-    title: 'Getting Started with React and Vite',
-    date: 'Nov 5, 2025',
-    excerpt: 'Step-by-step tutorial to set up a React project with Vite and Tailwind CSS.',
-    tags: ['React', 'JavaScript', 'Tutorial'],
-  },
-]
+import { usePortfolioContent } from '../content/portfolioContent'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -59,6 +28,9 @@ const itemVariants = {
 }
 
 const BlogPage = () => {
+  const content = usePortfolioContent()
+  const blogPosts = content.blogPosts
+
   return (
     <div className="min-h-screen bg-deep-charcoal text-gray-200">
       <Navbar />

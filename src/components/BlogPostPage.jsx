@@ -2,65 +2,12 @@ import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
-// This would normally come from a data file or API
-const blogPosts = [
-  {
-    slug: 'understanding-decision-trees',
-    title: 'Understanding Decision Trees in Machine Learning',
-    date: 'Feb 15, 2026',
-    content: `
-      <p>Decision trees are one of the most intuitive machine learning algorithms...</p>
-      <h2>How Decision Trees Work</h2>
-      <p>A decision tree splits data into branches based on feature values...</p>
-      <pre><code>from sklearn.tree import DecisionTreeClassifier</code></pre>
-      <p>...</p>
-    `,
-    tags: ['Machine Learning', 'Python', 'Tutorial'],
-  },
-  {
-    slug: 'energy-load-forecasting',
-    title: 'Short-Term Energy Load Forecasting: A Research Overview',
-    date: 'Jan 28, 2026',
-    content: `
-      <p>Energy load forecasting is a critical task in power system operation...</p>
-      <h2>Time Series Methods</h2>
-      <p>Traditional time series approaches like ARIMA have been widely used...</p>
-      <pre><code>import pandas as pd</code></pre>
-      <p>...</p>
-    `,
-    tags: ['Research', 'Energy', 'Forecasting'],
-  },
-  {
-    slug: 'css-grid-vs-flexbox',
-    title: 'CSS Grid vs Flexbox: When to Use Which',
-    date: 'Dec 10, 2025',
-    content: `
-      <p>CSS Grid and Flexbox are two powerful layout systems in modern CSS...</p>
-      <h2>When to Use Flexbox</h2>
-      <p>Flexbox is perfect for one-dimensional layouts...</p>
-      <h2>When to Use Grid</h2>
-      <p>CSS Grid excels at two-dimensional layouts...</p>
-      <p>...</p>
-    `,
-    tags: ['CSS', 'Web Development'],
-  },
-  {
-    slug: 'getting-started-with-react',
-    title: 'Getting Started with React and Vite',
-    date: 'Nov 5, 2025',
-    content: `
-      <p>React with Vite is the modern way to build fast web applications...</p>
-      <h2>Setting Up Your Project</h2>
-      <p>First, create a new Vite project with React...</p>
-      <pre><code>npm create vite@latest my-app -- --template react</code></pre>
-      <p>...</p>
-    `,
-    tags: ['React', 'JavaScript', 'Tutorial'],
-  },
-]
+import { usePortfolioContent } from '../content/portfolioContent'
 
 const BlogPostPage = () => {
+  const content = usePortfolioContent()
+  const blogPosts = content.blogPosts
+
   const { slug } = useParams()
   const post = blogPosts.find(p => p.slug === slug)
 

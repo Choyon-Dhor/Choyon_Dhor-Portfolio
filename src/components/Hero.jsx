@@ -6,6 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import profilePic from "../assets/choyon dhor.png";
+import { usePortfolioContent } from '../content/portfolioContent'
 
 // TypingEffect Component
 const TypingEffect = ({
@@ -223,6 +224,9 @@ const GeometricShapes = () => {
 
 // Main Hero Component
 const Hero = () => {
+  const content = usePortfolioContent()
+  const heroContent = content.hero
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const x = useMotionValue(0);
@@ -299,7 +303,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-4 font-medium"
             >
-              Hello, I'm
+              {heroContent.intro}
             </motion.p>
 
             {/* 2. Main Heading */}
@@ -310,18 +314,18 @@ const Hero = () => {
               className="mb-6"
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1]">
-                <span className="text-white">Choyon is a</span>
+                <span className="text-white">{heroContent.heading.prefix}</span>
                 <br />
                 <span className="neon-gradient-text text-glow-purple">
-                  CSE Student
+                  {heroContent.heading.primary}
                 </span>
                 <br />
-                <span className="text-white">and</span>
+                <span className="text-white">{heroContent.heading.connector}</span>
                 <br />
                 <span className="neon-gradient-text text-glow-purple">
-                  Machine Learning & AI
+                  {heroContent.heading.secondary}
                 </span>
-                <span className="text-white"> Enthusiast</span>
+                <span className="text-white"> {heroContent.heading.suffix}</span>
               </h1>
             </motion.div>
 
@@ -334,13 +338,7 @@ const Hero = () => {
             >
               <p className="text-lg sm:text-xl text-neon-purple-light font-medium">
                 <TypingEffect
-                  texts={[
-                    "ML Researcher",
-                    "AI Explorer",
-                    "Problem Solver",
-                    "Web Developer",
-                    "Data Structure & Algorithm"
-                  ]}
+                  texts={heroContent.typingTexts}
                   speed={80}
                   deleteSpeed={40}
                   pauseTime={1000}
@@ -355,8 +353,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="text-gray-400 text-base sm:text-lg max-w-xl mb-8 leading-relaxed"
             >
-              I build intelligent systems and research-driven web applications
-              with structured logic, scalable architecture, and clean design.
+              {heroContent.description}
             </motion.p>
 
             {/* 4. CTA Buttons */}
@@ -374,7 +371,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-neon-purple-light via-neon-purple to-neon-purple-dark opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                <span className="relative">Contact Me</span>
+                <span className="relative">{heroContent.primaryCta}</span>
               </motion.button>
               {/* Secondary Button - Download CV */}
               
@@ -401,7 +398,7 @@ const Hero = () => {
                       d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                     />
                   </svg>
-                  Download CV
+                  {heroContent.secondaryCta}
                 </span>
               </motion.a>
             </motion.div>
@@ -480,7 +477,7 @@ const Hero = () => {
               >
                 <span className="w-2 h-2 rounded-full bg-neon-purple animate-badge-pulse" />
                 <span className="text-sm text-neon-purple-light">
-                  Currently working on ML Research & Web Projects
+                  {heroContent.badge}
                 </span>
               </motion.div>
             </div>

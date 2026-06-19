@@ -1,30 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-
-// Sample recent blog posts – in a real project, you might import from a shared data file
-const recentPosts = [
-  {
-    slug: 'understanding-decision-trees',
-    title: 'Understanding Decision Trees in Machine Learning',
-    date: 'Feb 15, 2026',
-    excerpt: 'A deep dive into how decision trees work, their advantages, and practical implementation with Scikit-learn.',
-    tags: ['Machine Learning', 'Python', 'Tutorial'],
-  },
-  {
-    slug: 'energy-load-forecasting',
-    title: 'Short-Term Energy Load Forecasting: A Research Overview',
-    date: 'Jan 28, 2026',
-    excerpt: 'Exploring methods and challenges in predicting energy demand using time series and ML models.',
-    tags: ['Research', 'Energy', 'Forecasting'],
-  },
-  {
-    slug: 'css-grid-vs-flexbox',
-    title: 'CSS Grid vs Flexbox: When to Use Which',
-    date: 'Dec 10, 2025',
-    excerpt: 'A practical guide to choosing between Grid and Flexbox for modern web layouts.',
-    tags: ['CSS', 'Web Development'],
-  },
-]
+import { usePortfolioContent } from '../content/portfolioContent'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -50,8 +26,8 @@ const itemVariants = {
 }
 
 const BlogHome = () => {
-  // Show only the first 3 posts
-  const postsToShow = recentPosts.slice(0, 3)
+  const content = usePortfolioContent()
+  const postsToShow = content.blogPosts.slice(0, 3)
 
   return (
     <section id="blog" className="py-20 relative">

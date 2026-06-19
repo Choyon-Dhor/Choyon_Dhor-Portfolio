@@ -1,40 +1,11 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-
-const projects = [
-  {
-    title: 'Portfolio Website',
-    tech: ['React', 'Tailwind'],
-    description: 'Fully responsive personal portfolio website.',
-    live: '#',
-    github: '#',
-  },
-  
-  {
-    title: 'Freelancing Website for DBMS Course project',
-    tech: ['HTML', 'CSS', 'PHP', 'MYSQL'],
-    description: 'FreelanceHub - A complete freelance marketplace web application connecting clients with freelancers for job posting and project management',
-    live: '#',
-    github: 'https://github.com/Choyon-Dhor/Project-Freelancing_Portal',
-  },
-  {
-    title: 'Hand Written Digit Recognition using CNN',
-    tech: ['Python', 'ML'],
-    description: 'Deep Learning-based Handwritten Digit Recognition using Convolutional Neural Networks (CNN) on MNIST Dataset with performance evaluation and visualization.',
-    live: '#',
-    github: 'https://github.com/Choyon-Dhor/handwritten-digit-recognition-cnn',
-  },
-  {
-    title: 'Loan Approval Prediction & Churn Prediction',
-    tech: ['Python', 'Scikit-learn'],
-    description: 'Decision Tree classifier for financial approval prediction.',
-    live: '#',
-    github: 'https://github.com/Choyon-Dhor/ml-algorithm-implementations/blob/main/supervised-learning/Decision-tree-classification.ipynb',
-  },
-  
-]
+import { usePortfolioContent } from '../content/portfolioContent'
 
 const Projects = () => {
+  const content = usePortfolioContent()
+  const homeProjects = content.projects
+
   return (
     <section id="projects" className="py-24 relative projects-section-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -83,7 +54,7 @@ const Projects = () => {
 
         {/* Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.slice(0, 3).map((project, idx) => (
+          {homeProjects.slice(0, 3).map((project, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}

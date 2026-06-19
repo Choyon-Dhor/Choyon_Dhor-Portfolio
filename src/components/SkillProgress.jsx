@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { usePortfolioContent } from '../content/portfolioContent'
 
 // -------------------- Data --------------------
 // Skill levels and tooltips based on your expertise
-const skillCategories = [
+const fallbackSkillCategories = [
   {
     title: 'Programming Languages',
     icon: '💻', 
@@ -46,7 +47,7 @@ const skillCategories = [
 ]
 
 
-const stats = [
+const fallbackStats = [
   { value: '5+', label: 'Programming Languages' },
   { value: '10+', label: 'Projects Built' },
   { value: '2+', label: 'ML Research Works' },
@@ -191,6 +192,10 @@ const SkillCard = ({ category, inView, index }) => {
 
 // -------------------- Main Component --------------------
 const SkillsExpertise = () => {
+  const content = usePortfolioContent()
+  const skillCategories = content.progressSkills ?? fallbackSkillCategories
+  const stats = content.skillStats ?? fallbackStats
+
   const sectionRef = useRef(null)
   const inView = useInView(sectionRef, { once: true, amount: 0.3 })
 

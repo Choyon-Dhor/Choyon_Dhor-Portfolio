@@ -2,65 +2,14 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-
-// Project data – expanded with more ML-focused projects
-const projectsData = {
-  completeApps: [
-    {
-      title: 'Portfolio Website',
-    tech: ['React', 'Tailwind'],
-    description: 'Fully responsive personal portfolio website.',
-      links: { live: 'choyondhorportfolio-4uzi0vka2-choyon-dhors-projects.vercel.app', github: 'https://github.com/Choyon-Dhor/Choyon_Dhor-Portfolio' },
-    },
-    {
-      title: 'Freelancing Website for DBMS Course project',
-    tech: ['HTML', 'CSS', 'PHP', 'MYSQL'],
-    description: 'FreelanceHub - A complete freelance marketplace web application connecting clients with freelancers for job posting and project management',
-      links: { live: '#', github: 'https://github.com/Choyon-Dhor/Project-Freelancing_Portal' },
-    },
-    {
-       title: 'Hand Written Digit Recognition using CNN',
-    tech: ['Python', 'ML'],
-    description: 'Deep Learning-based Handwritten Digit Recognition using Convolutional Neural Networks (CNN) on MNIST Dataset with performance evaluation and visualization.',
-      links: { live: '#', github: 'https://github.com/Choyon-Dhor/handwritten-digit-recognition-cnn' },
-    },
-    {
-      ttitle: 'Loan Approval Prediction & Churn Prediction',
-    tech: ['Python', 'Scikit-learn'],
-    description: 'Decision Tree classifier for financial approval prediction.',
-      links: { live: '#', github: 'https://github.com/Choyon-Dhor/ml-algorithm-implementations/blob/main/supervised-learning/Decision-tree-classification.ipynb' },
-    },
-  ],
-  smallProjects: [
-    {
-      title: 'Bot Boilerplate',
-      description: 'Start creating scalable discord.js bot with TypeScript in seconds.',
-      tech: ['Discord.js', 'TypeScript'],
-      links: { github: '#' },
-    },
-    {
-      title: 'My Blog',
-      description: 'Front-end of my future blog website written in Vue.js.',
-      tech: ['Vue.js', 'CSS', 'JavaScript'],
-      links: { github: '#' },
-    },
-    {
-      title: 'Chess Pro',
-      description: 'Figma landing page about service for viewing chess tournaments.',
-      tech: ['Figma', 'UI/UX'],
-      links: { github: '#' },
-    },
-    {
-      title: 'URL Shortener',
-      description: 'Simple link shortener with authentication.',
-      tech: ['Python', 'Quart', 'HTML'],
-      links: { live: '#' },
-    },
-  ],
-}
+import { usePortfolioContent } from './content/portfolioContent'
 
 // Project Card Component (reusable)
 const ProjectCard = ({ project, idx, showLive = true }) => {
+  const liveLink = project.links?.live ?? project.live
+  const githubLink = project.links?.github ?? project.github
+  const cachedLink = project.links?.cached
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -94,25 +43,31 @@ const ProjectCard = ({ project, idx, showLive = true }) => {
 
       {/* Buttons */}
       <div className="flex gap-3 mt-auto">
-        {showLive && project.links?.live && (
-          <a 
-            href={project.links.live} 
+        {showLive && liveLink && (
+          <a
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary"
           >
             Live <span className="arrow">→</span>
           </a>
         )}
-        {project.links?.github && (
-          <a 
-            href={project.links.github} 
+        {githubLink && (
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-secondary"
           >
             GitHub <span className="arrow">→</span>
           </a>
         )}
-        {project.links?.cached && (
-          <a 
-            href={project.links.cached} 
+        {cachedLink && (
+          <a
+            href={cachedLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-secondary"
           >
             Cached <span className="arrow">→</span>
@@ -124,6 +79,12 @@ const ProjectCard = ({ project, idx, showLive = true }) => {
 }
 
 const ProjectsPage = () => {
+  const content = usePortfolioContent()
+  const projectsData = {
+    completeApps: content.projects ?? [],
+    smallProjects: content.projectsPage?.smallProjects ?? [],
+  }
+
   return (
     <div className="min-h-screen bg-deep-charcoal text-gray-200">
       <Navbar />

@@ -1,4 +1,6 @@
-const skillCategories = [
+import { usePortfolioContent } from '../content/portfolioContent'
+
+const fallbackSkillCategories = [
   {
     title: 'Languages',
     rows: [
@@ -40,6 +42,9 @@ const skillCategories = [
 ]
 
 const Skills = () => {
+  const content = usePortfolioContent()
+  const skillCategories = content.simpleSkills ?? fallbackSkillCategories
+
   return (
     <section id="skills" className="py-20">
       <h2 className="text-3xl font-bold mb-12">#skills</h2>

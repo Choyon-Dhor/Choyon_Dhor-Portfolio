@@ -8,85 +8,7 @@ import {
 } from "react-icons/fi";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
-const activitiesData = [
-  {
-    title: "Campus Coordinator – YUNet",
-    organization: "Youth Upskill Network (YUNet)",
-    period: "2026 – Present",
-    description:
-      "Representing YUNet on campus to bridge the gap between learning and real-world skills. Leading workshops, building partnerships with university clubs, and driving youth engagement through skill development initiatives aligned with SDGs.",
-    achievements: [
-      "Organizing skill development workshops and seminars on campus",
-      "Building partnerships with university clubs and student organizations",
-      "Driving student engagement through tech and innovation programs",
-      "Contributing to YUNet national initiatives and growth tracker milestones",
-    ],
-    tags: [
-      "Leadership",
-      "Workshops",
-      "Youth Empowerment",
-      "Community Building",
-    ],
-    link: "https://www.facebook.com/photo?fbid=122194083116459019&set=a.122106430832459019",
-    color: "from-indigo-500 to-purple-500",
-  },
-  {
-    title: "Cultural Secretary – MU CSE Society",
-    organization: "Metropolitan University CSE Society",
-    period: "2024 – 2025",
-    description:
-      "Organized national-level university tech and cultural fest, managed events with 500+ participants.",
-    achievements: [
-      "Successfully organized MU CSE FEST 2025",
-      "Led a team of 60 volunteers",
-      "Coordinated with sponsors and guest speakers",
-    ],
-    tags: ["Leadership", "Event Management"],
-    link: "https://www.facebook.com/mucsefest2024",
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    title: "Campus Ambassador – Bdapps",
-    organization: "Bdapps (Robi)",
-    period: "2025 – 2026",
-    description:
-      "Conducted workshops and promoted tech learning initiatives in our university.",
-    achievements: [
-      "Reached 1000+ students through workshops",
-      "Top 20 ambassador in quarterly performance",
-      "Facilitated hands-on sessions on app development",
-    ],
-    tags: ["Workshops", "Outreach"],
-    link: "#",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    title: "Assistant – CSPI",
-    organization: "Center for Strategy and Policy Initiatives",
-    period: "2025 – Dec",
-    description:
-      "Involved in strategy and policy research discussions, contributed to policy briefs.",
-    achievements: ["Co-authored a policy brief on digital education"],
-    tags: ["Research", "Policy"],
-    link: "https://www.facebook.com/photo/?fbid=122222831504188613&set=pcb.122222831624188613",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    title: "Disaster Response Volunteer – Sylhet Flood",
-    organization: "Voluntary Association",
-    period: "2022",
-    description:
-      "Participated in humanitarian flood response operations, distributed relief goods.",
-    achievements: [
-      "Assisted in relief distribution to 300+ families",
-      "Coordinated with local NGOs for efficient response",
-    ],
-    tags: ["Volunteering", "Relief"],
-    link: "https://www.facebook.com/share/v/1Fx1SMNqDQ/",
-    color: "from-orange-500 to-red-500",
-  },
-];
+import { usePortfolioContent } from '../content/portfolioContent'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -112,6 +34,9 @@ const itemVariants = {
 };
 
 const ActivitiesPage = () => {
+  const content = usePortfolioContent()
+  const activitiesData = content.activitiesPage
+
   return (
     <div className="min-h-screen bg-deep-charcoal text-gray-200">
       <Navbar />

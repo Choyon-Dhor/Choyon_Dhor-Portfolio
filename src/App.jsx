@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import BlogHome from './components/BlogHome'
 import AnimatedBar from './components/AnimatedBar'
 import Separator from './components/Separator'
+import AdminDashboard from './pages/AdminDashboard'
 
 // Page components (now from pages folder)
 import ProjectsPage from './ProjectsPage'
@@ -60,6 +61,7 @@ function App() {
         <Route path="/activities" element={<ActivitiesPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   )

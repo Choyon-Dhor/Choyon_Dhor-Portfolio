@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { quoteContent } from '../content/portfolioContent'
 
 const Quote = () => {
   return (
@@ -22,7 +23,7 @@ const Quote = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-center relative z-10 text-white leading-relaxed"
           >
-            Code is not just syntax. It is structured thinking.
+            {quoteContent.text}
           </motion.p>
           <span className="absolute bottom-4 right-6 text-8xl text-neon-purple/10 font-serif select-none">
             "
@@ -34,7 +35,7 @@ const Quote = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center mt-6 text-neon-purple-light font-medium"
           >
-            — Choyon Dhor
+            — {quoteContent.author}
           </motion.p>
           
         </motion.div>
